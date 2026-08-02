@@ -184,12 +184,7 @@
 		
 	<script src="js/nes.min.js"></script>
 	<script>
-		// Auto-load a default ROM on boot, without disturbing WebNES's own
-		// startup logic. WebNES's window.onload reads a "gameUrl" query
-		// string param via getParameterByName("gameUrl"); we wrap that
-		// function so it falls back to our bundled ROM when no explicit
-		// gameUrl is given in the URL, then hand off to the original
-		// window.onload exactly as WebNES defined it.
+	
 		(function () {
 			var DEFAULT_ROM_URL = "roms/loja.nes";
 			var originalOnload = window.onload;
