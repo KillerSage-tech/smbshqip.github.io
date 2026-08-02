@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Minimal dark theme override for WebNES.
+   Loaded AFTER thirdparty.min.css and main.min.css - only overrides colors.
+   No structural HTML/JS was touched, so all functionality still works
+   exactly as it did before (drag/drop, dialogs, save states, game genie).
+   ========================================================================== */
+
+html, body#body {
+  background: #000 !important;
+  color: #e9e7df;
+  padding: 0 !important;
+  margin: 0;
+}
+
+#content {
+  width: 100% !important;
+  min-height: 100vh;
+  display: flex !important;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ---------- Controls list (left side) ---------- */
+
+.infoPanel {
+  position: static !important;
+  width: 260px !important;
+  height: auto !important;
+  flex-shrink: 0;
+}
+
+.infoPanel .controlsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.infoPanel .controlsList li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.25rem;
+  border-bottom: 1px solid #1e1e1e;
+}
+.infoPanel .controlsList .key {
+  flex-shrink: 0;
+  min-width: 2.4em;
+  padding: 0.3rem 0.5rem;
+  background: linear-gradient(#242424, #151515);
+  border: 1px solid #3a3a3a;
+  border-bottom: 2px solid #050505;
+  border-radius: 6px;
+  color: #e9e7df;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-align: center;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.5);
+}
+.infoPanel .controlsList .labels {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+.infoPanel .controlsList .en {
+  color: #e9e7df;
+  font-size: 0.85rem;
+}
+.infoPanel .controlsList .al {
+  color: #6b6f80;
+  font-size: 0.72rem;
+  font-style: italic;
+  margin-top: 0.1rem;
+}
+
+/* Hide the ROM/shader pickers - the game loads automatically, and the
+   engine's own JS toggles these elements' inline display style, so we
+   force them off with !important rather than relying on the HTML alone. */
+#loadGameComboBox,
+#postProcessingDiv,
+.infoPanel p:has(#loadGameComboBox) {
+  display: none !important;
+}
+
+/* ---------- Screen ---------- */
+
+.wrapper canvas {
+  box-shadow: none !important;
+  image-rendering: pixelated;
+  display: block;
+}
+
+/* ---------- Control bar / dialogs: keep visible against black bg ---------- */
+
+.ui-widget-content { background: #111 !important; color: #e9e7df !important; }
+.ui-widget-header { background: #1a1a1a !important; color: #e9e7df !important; border: none !important; }
+.ui-dialog { background: #111 !important; border: 1px solid #333 !important; color: #e9e7df !important; }
+.ui-dialog .ui-dialog-titlebar { background: #1a1a1a !important; border: none !important; border-bottom: 1px solid #333 !important; color: #e9e7df !important; }
